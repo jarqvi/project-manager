@@ -1,0 +1,29 @@
+{
+  "name": "project-manager",
+  "version": "1.0.0",
+  "description": "This is a project-manager project",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jarqvi/project-manager.git"
+  },
+  "keywords": [
+    "node","express",
+    "mongodb","mongoose",
+    "project-manager",
+    "api","js"
+  ],
+  "author": "MohammadHasan Akbari",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jarqvi/project-manager/issues"
+  },
+  "homepage": "https://github.com/jarqvi/project-manager#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}
