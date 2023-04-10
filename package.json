@@ -12,10 +12,13 @@
     "url": "git+https://github.com/jarqvi/project-manager.git"
   },
   "keywords": [
-    "node","express",
-    "mongodb","mongoose",
+    "node",
+    "express",
+    "mongodb",
+    "mongoose",
     "project-manager",
-    "api","js"
+    "api",
+    "js"
   ],
   "author": "MohammadHasan Akbari",
   "license": "MIT",
@@ -25,5 +28,9 @@
   "homepage": "https://github.com/jarqvi/project-manager#readme",
   "devDependencies": {
     "nodemon": "^2.0.22"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^7.0.3"
   }
 }
