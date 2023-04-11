@@ -51,11 +51,12 @@ module.exports = class Application {
         });
     }
     createRoutes() {
-        this.#app.get('/', (req, res, next) => {
-            return res.json({
-                message: 'this is a new express application.'
-            });
-        });
         this.#app.use(AllRoutes);
+        // this.#app.use((err, req, res, next) => {
+        //     try {
+        //     } catch (err) {
+        //         next(err);
+        //     }
+        // });
     }
 };
