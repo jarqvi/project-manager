@@ -1,4 +1,5 @@
 const { AllRoutes } = require('./router/router');
+const asyncHandler = require('express-async-handler');
 
 module.exports = class Application {
     #express = require('express');
@@ -51,11 +52,12 @@ module.exports = class Application {
         });
     }
     createRoutes() {
-        this.#app.get('/', (req, res, next) => {
-            return res.json({
-                message: 'this is a new express application.'
-            });
-        });
-        this.#app.use(AllRoutes);
+        this.#app.use(asyncHandler(AllRoutes));
+        // this.#app.use((err, req, res, next) => {
+        //     try {
+        //     } catch (err) {
+        //         next(err);
+        //     }
+        // });
     }
 };
