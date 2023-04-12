@@ -9,7 +9,8 @@ const UserSchema = new mongoose.Schema({
     password: { type: String, required: true },
     roles: { type: [String], default: ['USER'] },
     skills: { type: [String], default: [] },
-    team: { type: [mongoose.Types.ObjectId], default: [] }
+    team: { type: [mongoose.Types.ObjectId], default: [] },
+    token: { type: String, default: '' },
 });
 const UserModel = mongoose.model('user', UserSchema);
 
