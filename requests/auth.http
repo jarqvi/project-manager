@@ -1,12 +1,22 @@
-###register requests
+###register request
 
 POST http://localhost:3000/auth/register
 content-type: application/json
 
+{   
+    "username": "mhakbarim",
+    "email": "akbari@gmail.com",
+    "mobile": "09190000000",
+    "password": "admin123",
+    "confirmPassword": "admin123"
+}
+
+###login request
+
+POST http://localhost:3000/auth/login
+content-type: application/json
+
 {
-    "username": "bbdsabbsb",
-    "email": "bbdabab@gmail.com",
-    "mobile": "09199742334",
-    "password": "123456789",
-    "confirmPassword": "123456789"
+    "username": "mhakbarim",
+    "password": "admin123"
 }

@@ -12,8 +12,9 @@ function registerValidator() {
                     return true;
                 }
                 throw ('Username can only contain letters, numbers, underscores and dots.');
+            } else {
+                throw ('Username cannot be empty.');
             }
-            throw ('Username cannot be empty.');
         }),
         body('email').isEmail().withMessage('Email is not valid.').custom(async email => {
             const user = await UserModel.findOne({email});
@@ -45,6 +46,32 @@ function registerValidator() {
     ];
 }
 
+function loginValidator() {
+    return [
+        body('username').notEmpty().withMessage('Username cannot be empty.').custom(async username => {
+                const usernameRegex = /^[a-z]+[a-z0-9\_\.]{2,}/gi;
+                if (usernameRegex.test(username)) { 
+                    return true;
+                }
+                throw ('Username or password is incorrect.');
+        }),
+        body('password').isLength({min: 6, max: 16}).withMessage('Password must be between 6 and 16 characters.'),
+        (req, res, next) => {
+            const validFields = ['username', 'password'];
+            const invalidFields = Object.keys(req.body).filter(
+                field => !validFields.includes(field)
+            );
+            if (invalidFields.length) {
+                return res.status(400).json({
+                    error: `Invalid field: ${invalidFields.join(', ')}`
+                });
+            }
+            next();
+        }
+    ];
+}
+
 module.exports = {
-    registerValidator
+    registerValidator,
+    loginValidator
 };
