@@ -1,4 +1,4 @@
-const { hashString } = require("../../modules/functions");
+const { hashString, tokenGenerator } = require("../../modules/functions");
 const { UserModel } = require("../../models/user");
 const bcrypt = require('bcrypt'); 
 
@@ -20,11 +20,14 @@ class AuthController{
             if (!user) throw {status: 401, message: 'User or password is incorrect.'};
             const compareResult = bcrypt.compareSync(password, user.password);
             if (!compareResult) throw {status: 401, message: 'User or password is incorrect.'};
+            const token = tokenGenerator({username});
+            user.token = token;
+            user.save();
             return res.status(200).json({
                 status: 200,
                 success: true,
                 message: 'Login successful',
-                token: 'token'
+                token
             });
         } catch (error) {
             next(error);
