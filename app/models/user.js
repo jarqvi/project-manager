@@ -7,6 +7,7 @@ const UserSchema = new mongoose.Schema({
     email: { type: String, required: true, unique: true },
     mobile: { type: String, required: true, unique: true },
     password: { type: String, required: true },
+    profile_image: { type: String },
     roles: { type: [String], default: ['USER'] },
     skills: { type: [String], default: [] },
     team: { type: [mongoose.Types.ObjectId], default: [] },
