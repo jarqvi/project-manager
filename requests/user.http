@@ -1,3 +1,15 @@
 ###getUserProfile
 GET http://localhost:3000/user/profile
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1oYWtiYXJpbSIsImlhdCI6MTY4MTM1NDM2NiwiZXhwIjoxNzEyODkwMzY2fQ.EGwERDRgI_6va2VWU7i43GNc_tC9_yTL5PEybrxGtTw
+
+###updateUserProfile
+POST http://localhost:3000/user/profile
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1oYWtiYXJpbSIsImlhdCI6MTY4MTM1NDM2NiwiZXhwIjoxNzEyODkwMzY2fQ.EGwERDRgI_6va2VWU7i43GNc_tC9_yTL5PEybrxGtTw
+Content-Type: application/json
+
+{
+    "_id": "64362bb961c1cbec583f0b2d",
+    "first_name": "John",
+    "last_name": "Doe",
+    "skills": ["Java", "Python", "C++", "C#", "JavaScript"]
+}
