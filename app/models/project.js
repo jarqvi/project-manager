@@ -8,7 +8,7 @@ const ProjectSchema = new mongoose.Schema({
     team: { type: mongoose.Types.ObjectId },
     private: { type: Boolean, default: true }
 });
-const ProjectModel = mongoose.model('team', ProjectSchema);
+const ProjectModel = mongoose.model('project', ProjectSchema);
 
 module.exports = {
     ProjectModel
