@@ -17,8 +17,19 @@ class ProjectController{
             next(error);
         }
     }
-    getAllProject() {
-
+    async getAllProject(req, res, next) {
+        try {
+            const owner = req.user._id;
+            const myProjects = await ProjectModel.find({owner});
+            myProjects[0].image = req.protocol + '://' + req.get('host') + (myProjects[0].image).replace(/\\/g, '/').replace('public', '');
+            return res.status(200).json({
+                status: 200,
+                success: true,
+                myProjects
+            });
+        } catch (error) {
+            next(error);
+        }
     }
     getAllProjectById() {
         
