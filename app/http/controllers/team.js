@@ -33,11 +33,54 @@ class TeamController{
             next(error);
         }
     }
+    async getTeamById(req, res, next) {
+        try {
+            const teamId = req.params.id;
+            const team = await TeamModel.findById(teamId);
+            if (!team) throw {status: 404, message: "Team not found."};
+            return res.status(200).json({
+                status: 200,
+                success: true,
+                team
+            });
+        } catch (error) {
+            next(error);
+        }
+    }
+    async getMyTeams(req, res, next) {
+        try {
+            const userId = req.user._id;
+            const teams = await TeamModel.find({
+                $or: [
+                    {owner: userId},
+                    {users: userId}
+                ]
+            });
+            return res.status(200).json({
+                status: 200,
+                success: true,
+                teams
+            });
+        } catch (error) {
+            next(error);
+        }
+    }
+    async removeTeamById(req, res, next) {
+        try {
+            const teamId = req.params.id;
+            const team = await TeamModel.findByIdAndDelete(teamId);
+            if (!team) throw {status: 404, message: "Team not found."};
+            return res.status(200).json({
+                status: 200,
+                success: true,
+                message: "Team deleted successfully."
+            });
+        } catch (error) {
+            next(error);
+        }
+    }
     inviteUserToTeam() {
 
-    }
-    removeTeamById() {
-        
     }
     UpdateTeam() {
         

@@ -7,7 +7,7 @@ function createTeamValidator() {
         body('description').notEmpty().isLength({min: 10}).withMessage("Team description must be at least 10 characters long."),
         body('username').custom(async (username) =>{
             const regex = /^[a-z]+[a-z0-9\_\.]{3,}$/gim;
-            if (username.test(regex)) {
+            if (regex.test(username)) {
                 const team = await TeamModel.findOne({username});
                 if (team) throw {message: "Team username already exists."};
                 return true;
