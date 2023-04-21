@@ -10,6 +10,7 @@ router.get('/get-teams', checkLogin, expressValidatorMapper, TeamController.getL
 router.get('/get-team/:id', checkLogin, objectIdValidator(), expressValidatorMapper, TeamController.getTeamById);
 router.get('/me', checkLogin, TeamController.getMyTeams);
 router.delete('/remove/:id', checkLogin, objectIdValidator(), expressValidatorMapper, TeamController.removeTeamById);
+router.get('/invite/:teamId/:username', checkLogin, TeamController.inviteUserToTeam);
 
 module.exports = {
     teamRoute: router
