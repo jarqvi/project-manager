@@ -117,8 +117,27 @@ class TeamController{
             next(error);
         }
     }
-    UpdateTeam() {
-        
+    async UpdateTeam(req, res, next) {
+        try {
+            const data = {...req.body};
+            Object.keys(data).forEach(key => {
+                if (!data[key]) delete data[key];
+                if (['', ' ', undefined, null, NaN].includes(data[key])) delete data[key];
+            });
+            const userId = req.user._id;
+            const {teamId} = req.params;
+            const team = await TeamModel.findOne({owner: userId, _id: teamId});
+            if (!team) throw {status: 404, message: "Team not found."};
+            const teamEditResult = await TeamModel.updateOne({_id: teamId}, data);
+            if (teamEditResult.modifiedCount == 0) throw {status: 500, message: "Team not updated."};
+            return res.status(200).json({
+                status: 200,
+                success: true,
+                message: "Team updated successfully."
+            });
+        } catch (error) {
+            next(error);
+        }
     }
     removeUserFromTeam() {
         
