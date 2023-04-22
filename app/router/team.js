@@ -11,6 +11,7 @@ router.get('/get-team/:id', checkLogin, objectIdValidator(), expressValidatorMap
 router.get('/me', checkLogin, TeamController.getMyTeams);
 router.delete('/remove/:id', checkLogin, objectIdValidator(), expressValidatorMapper, TeamController.removeTeamById);
 router.get('/invite/:teamId/:username', checkLogin, TeamController.inviteUserToTeam);
+router.put('/update/:teamId', checkLogin, TeamController.UpdateTeam);
 
 module.exports = {
     teamRoute: router

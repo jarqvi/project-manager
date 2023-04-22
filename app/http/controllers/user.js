@@ -117,9 +117,6 @@ class UserController{
             next(error)
         }
     }
-    rejectInviteInTeam() {
-        
-    }
 }
 
 module.exports = {
