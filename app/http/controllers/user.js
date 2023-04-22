@@ -66,14 +66,56 @@ class UserController{
             next(error)
         }
     }
-    addSkills() {
-        
+    async getRequestsByStatus(req, res, next) {
+        try {
+            const {status} = req.params;
+            const userId = req.user._id;
+            const requests = await UserModel.aggregate([
+                {
+                    $match: {_id: userId}
+                },
+                {
+                    $project: {
+                        inviteRequests: 1,
+                        _id: 0,
+                        inviteRequests: {
+                            $filter: {
+                                input: '$inviteRequests',
+                                as: 'request',
+                                cond: {$eq: ['$$request.status', `${status}`]}
+                            }
+                        }
+                    }
+                }
+            ]);
+            return res.status(200).json({
+                status: 200,
+                success: true,
+                requests: requests?.[0]?.inviteRequests || []
+            });
+        } catch (error) {
+            next(error);
+        }
     }
-    editSkills() {
-        
-    }
-    acceptInviteInTeam() {
-        
+    async changeStatusRequest(req, res, next) {
+        try {
+            const {id, status} = req.params;
+            const request = await UserModel.findOne({'inviteRequests._id': id});
+            if (!request) throw {status: 404, message: 'Request not found.'};
+            const findRequest = request.inviteRequests.find(item => item.id == id);
+            if (findRequest.status !== 'pending') throw {status: 400, message: 'Request is not pending.'};
+            if (!['approved', 'rejected'].includes(status)) throw {status: 400, message: 'Status is not valid.'};
+            const updateResult = await UserModel.updateOne({'inviteRequests._id': id}, {$set: {'inviteRequests.$.status': status}});
+            if (updateResult.modifiedCount == 0) throw {status: 500, message: 'Update request failed.'};
+            return res.status(200).json({
+                status: 200,
+                success: true,
+                message: 'Update request successfully'
+            });
+
+        } catch (error) {
+            next(error)
+        }
     }
     rejectInviteInTeam() {
         
