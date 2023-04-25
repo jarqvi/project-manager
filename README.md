@@ -11,26 +11,34 @@ To get started with this project, you will need to follow these steps:
 1.  Clone the project repository to your local machine using the following command:
 
     bashCopy code
-
-    `git clone https://github.com/your-username/simple-task-manager.git`
+    
+    ```
+    `$ git clone https://github.com/your-username/simple-task-manager.git`
+    ```
 
 2.  Change into the project directory:
 
     bashCopy code
-
-    `cd simple-task-manager`
+    
+    ```
+    `$ cd simple-task-manager`
+    ```
 
 3.  Install the required packages using npm:
 
     Copy code
-
-    `npm install`
+    
+    ```
+    `$ npm install`
+    ```
 
 4.  Start the application:
 
     sqlCopy code
-
-    `npm start`
+    
+    ```
+    `$ npm start`
+    ```
 
 5.  Open your web browser and go to `http://localhost:3000` to access the application.
 
