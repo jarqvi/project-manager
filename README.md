@@ -13,7 +13,7 @@ To get started with this project, you will need to follow these steps:
     bashCopy code
     
     ```
-    $ git clone https://github.com/your-username/simple-task-manager.git
+    $ git clone https://github.com/jarqvi/project-manager.git
     ```
 
 2.  Change into the project directory:
@@ -21,7 +21,7 @@ To get started with this project, you will need to follow these steps:
     bashCopy code
     
     ```
-    $ cd simple-task-manager
+    $ cd project-manager
     ```
 
 3.  Install the required packages using npm:
