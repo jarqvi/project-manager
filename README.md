@@ -13,7 +13,7 @@ To get started with this project, you will need to follow these steps:
     bashCopy code
     
     ```
-    `$ git clone https://github.com/your-username/simple-task-manager.git`
+    $ git clone https://github.com/your-username/simple-task-manager.git
     ```
 
 2.  Change into the project directory:
@@ -21,7 +21,7 @@ To get started with this project, you will need to follow these steps:
     bashCopy code
     
     ```
-    `$ cd simple-task-manager`
+    $ cd simple-task-manager
     ```
 
 3.  Install the required packages using npm:
@@ -29,7 +29,7 @@ To get started with this project, you will need to follow these steps:
     Copy code
     
     ```
-    `$ npm install`
+    $ npm install
     ```
 
 4.  Start the application:
@@ -37,7 +37,7 @@ To get started with this project, you will need to follow these steps:
     sqlCopy code
     
     ```
-    `$ npm start`
+    $ npm start
     ```
 
 5.  Open your web browser and go to `http://localhost:3000` to access the application.
