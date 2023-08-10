@@ -63,6 +63,10 @@ This project uses the following dependencies:
 -   Mongoose
 -   JSON Web Token (JWT)
 
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
+
 Conclusion
 ----------
 
